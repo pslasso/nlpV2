@@ -38,7 +38,7 @@ app.post('/analyse', analyse)
 
 function analyse(req, res) {
     newEntrie = {
-        feelings: req.body.feelings
+        feelings: req.body.formtext
     }
     data.push(newEntrie)
     res.send(data)
