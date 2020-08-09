@@ -1,3 +1,7 @@
+let baseURL = 'https://api.meaningcloud.com/sentiment-2.1'
+let apiKey = process.env.API_KEY;
+let lang = '&lang=en'
+
 var path = require('path')
 const express = require('express')
 var request = require("request");
@@ -27,23 +31,36 @@ app.get('/', function(req, res) {
     res.sendFile('dist/index.html')
 });
 
-app.get('/all', function(req, res) {
-    function getData(req, res) {
-        res.send(data)
+
+app.post('/analyse', async(req, res) => {
+    try {
+        const analyse = await post(`${baseURL}${apiKey}${lang}&txt=${req.body.formText}`);
+
+        const { data } = analyse;
+
+        const { agreement } = data;
+        const { subjectivity } = data;
+        const { confidence } = data;
+        const { irony } = data;
+
+        sentiment = {
+            score_tag,
+            agreement,
+            subjectivity,
+            confidence,
+            irony,
+        };
         console.log(data)
+
+    } catch (error) {
+        console.log(`${error}`);
     }
 });
 
-app.post('/analyse', analyse)
+app.get("/all", (req, res) => {
+    res.send(sentiment);
+});
 
-function analyse(req, res) {
-    newEntrie = {
-        feelings: req.body.formtext
-    }
-    data.push(newEntrie)
-    res.send(data)
-    console.log(data)
-}
 
 
 // designates what port the app will listen to for incoming requests
