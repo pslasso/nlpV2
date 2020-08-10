@@ -7,8 +7,9 @@ var axios = require('axios')
 var path = require('path')
 const express = require('express')
 var request = require("request")
-const dotenv = require('dotenv');
-const app = express()
+const dotenv = require('dotenv')
+
+const app = express();
 
 app.use(express.static('dist'))
 
@@ -66,4 +67,4 @@ app.get("/all", (req, res) => {
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function() {
     console.log('Example app listening on port 8081!')
-})
+});

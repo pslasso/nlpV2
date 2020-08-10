@@ -12,15 +12,10 @@ input {
     display: block;
 }
 
-#container {
-    display: inline-block;
-    min-height: 100px;
-    max-height: 400px;
-    width: 100%;
-}
-
 #name {
     width: 100%;
+    min-height: 1.5em;
+    max-height: 15em;
 }
 
 #button {
