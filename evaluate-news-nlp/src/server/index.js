@@ -1,27 +1,27 @@
-let baseURL = 'https://api.meaningcloud.com/sentiment-2.1'
+let baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
 let apiKey = process.env.API_KEY;
-let lang = '&lang=en'
+let lang = '&lang=en';
 
+const bodyParser = require('body-parser');
+var axios = require('axios')
 var path = require('path')
 const express = require('express')
-var request = require("request");
-
+var request = require("request")
+const dotenv = require('dotenv');
 const app = express()
 
 app.use(express.static('dist'))
-const dotenv = require('dotenv');
+
 dotenv.config();
 console.log(__dirname)
 
 /* Middleware*/
 
-const bodyParser = require('body-parser');
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
-
 const cors = require('cors');
 app.use(cors());
 
@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 
 app.post('/analyse', async(req, res) => {
     try {
-        const analyse = await post(`${baseURL}${apiKey}${lang}&txt=${req.body.formText}`);
+        const analyse = await axios.post(`${baseURL}?key=${apiKey}${lang}&txt=${req.query.formText}&model=general`);
 
         const { data } = analyse;
 
@@ -59,8 +59,8 @@ app.post('/analyse', async(req, res) => {
 
 app.get("/all", (req, res) => {
     res.send(sentiment);
+    console.log(sentiment);
 });
-
 
 
 // designates what port the app will listen to for incoming requests

@@ -10,8 +10,8 @@
 <body>
 
     <header>
-        <div class="">
-
+        <div class="title">
+            SENTIMENT ANALISYS APP
         </div>
         <div class="">
 
@@ -20,16 +20,22 @@
 
     <main>
         <section>
+
             <form class="" onsubmit="return handleSubmit(event)">
-                <li>Enter yout text:</li>
-                <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Text">
-                <input type="submit" name="" rows="20" cols="20" value="submit" id="button" onclick="return Client.handleSubmit(event)">
+                <label>Enter yout text:</label>
+                <div id="container">
+                    <input id="name" type="text" name="input" rows="30" cols="1" contenteditable="true" value="" onblur="onBlur()" placeholder="Text">
+                </div>
+                <input type="submit" name="" value="Submit" id="button" onclick="return Client.handleSubmit(event)">
             </form>
+
             <section>
 
                 <section>
-                    <strong>Sentiment Analisys Results:</strong>
-                    <div id="results"></div>
+                    <div id="analysis">
+                        <strong>Sentiment Analisys Results:</strong>
+                        <div id="results"></div>
+                    </div>
                 </section>
     </main>
 
