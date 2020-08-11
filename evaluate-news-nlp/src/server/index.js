@@ -48,7 +48,6 @@ app.post('/analyse', async(req, res) => {
         const { confidence } = data;
         const { irony } = data;
 
-
         sentiment = {
             score_tag,
             agreement,
@@ -56,6 +55,7 @@ app.post('/analyse', async(req, res) => {
             confidence,
             irony,
         };
+
         console.log(data)
 
     } catch (error) {
@@ -65,7 +65,7 @@ app.post('/analyse', async(req, res) => {
 
 app.get("/all", (req, res) => {
     res.send(sentiment);
-    console.log(sentiment);
+    console.log(`returning => ${sentiment}`);
 });
 
 

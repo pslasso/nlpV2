@@ -20,21 +20,14 @@ async function handleSubmit(event) {
     const sentiment = await fetch("http://localhost:8081/all");
     const sentimentJson = await sentiment.json();
 
-    console.log(sentiment);
+    console.log(`returning ${sentiment}`);
     console.log(sentimentJson);
 
+    console.log("print");
 
+    let results = document.getElementById('results').innerHTML("hello");
 
-    //Update UI
-    const updateUI = async(analyse) => {
-        console.log("UI=> ", analyse)
-        document.getElementById('results').innerHTML = `Your imput has:
-        Score tag of: ${analyse.score_tag} -
-        Confidence: ${analyse.confidence} -
-        Agreement: ${analyse.agreement} -
-        Irony: ${analyse.irony}`;
-    }
-    updateUI(data);
+    Client.updateUI(sentimentJson);
 }
 
 export {
