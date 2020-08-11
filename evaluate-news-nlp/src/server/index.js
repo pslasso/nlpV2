@@ -1,20 +1,22 @@
 let baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
-let apiKey = process.env.API_KEY;
 let lang = '&lang=en';
 
 const bodyParser = require('body-parser');
-var axios = require('axios')
-var path = require('path')
-const express = require('express')
-var request = require("request")
-const dotenv = require('dotenv')
+var axios = require('axios');
+var path = require('path');
+const express = require('express');
+var request = require("request");
+const dotenv = require('dotenv');
 
 const app = express();
 
 app.use(express.static('dist'))
 
 dotenv.config();
+
 console.log(__dirname)
+
+let apiKey = process.env.API_KEY;
 
 /* Middleware*/
 
@@ -25,6 +27,7 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 const cors = require('cors');
 app.use(cors());
+
 
 // TODO-ROUTES!
 
