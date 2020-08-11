@@ -10,22 +10,27 @@ async function handleSubmit(event) {
         mode: "cors",
         headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify(formText),
+        body: JSON.stringify({ formText: formText }),
     });
 
 
+    //Fetch 
     const sentiment = await fetch("http://localhost:8081/all");
     const sentimentJson = await sentiment.json();
 
+    console.log(sentiment);
+    console.log(sentimentJson);
 
-    const updateUI = (sentimentJson) => {
-        console.log("UI=> ", sentimentJson)
+
+    const updateUI = (analyse) => {
+        console.log("UI=> ", analyse)
         document.getElementById('results').innerHTML = `Here is the result of the analysis:
-    Score tag of: ${sentimentJson.score_tag} -
-    Confidence: ${sentimentJson.confidence} -
-    Agreement: ${sentimentJson.agreement} -
-    Irony: ${sentimentJson.irony}`;
+    Score tag: ${analyse.score_tag} -
+    Confidence: ${analyse.confidence} -
+    Agreement: ${analyse.agreement} -
+    Irony: ${analyse.irony}`;
     }
 }
 

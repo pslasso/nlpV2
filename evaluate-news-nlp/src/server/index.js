@@ -35,14 +35,16 @@ app.get('/', function(req, res) {
 
 app.post('/analyse', async(req, res) => {
     try {
-        const analyse = await axios.post(`${baseURL}?key=${apiKey}${lang}&txt=${req.query.formText}&model=general`);
+        const analyse = await axios.post(`${baseURL}?key=${apiKey}${lang}&txt=${req.body.formText}&model=general`);
 
         const { data } = analyse;
 
+        const { score_tag } = data;
         const { agreement } = data;
         const { subjectivity } = data;
         const { confidence } = data;
         const { irony } = data;
+
 
         sentiment = {
             score_tag,

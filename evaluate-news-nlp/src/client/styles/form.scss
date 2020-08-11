@@ -21,7 +21,8 @@ input {
 #button {
     width: 20%;
     &:hover {
-        background: aqua;
+        background: rgba(0, 13, 60, 0.2);
+        color: whitesmoke;
         cursor: pointer;
     }
 }
