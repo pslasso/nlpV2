@@ -16,14 +16,14 @@ async function handleSubmit(event) {
     });
 
 
-    //Fetch 
+    //Fetch data
     const sentiment = await fetch("http://localhost:8081/all");
     const sentimentJson = await sentiment.json();
 
     console.log(sentiment);
     console.log(sentimentJson);
 
-
+    //Update UI
     const updateUI = (analyse) => {
         console.log("UI=> ", analyse)
         document.getElementById('results').innerHTML = `Here is the result of the analysis:
