@@ -23,15 +23,18 @@ async function handleSubmit(event) {
     console.log(sentiment);
     console.log(sentimentJson);
 
+
+
     //Update UI
-    const updateUI = (analyse) => {
+    const updateUI = async(analyse) => {
         console.log("UI=> ", analyse)
-        document.getElementById('results').innerHTML = `Here is the result of the analysis:
-    Score tag: ${analyse.score_tag} -
-    Confidence: ${analyse.confidence} -
-    Agreement: ${analyse.agreement} -
-    Irony: ${analyse.irony}`;
+        document.getElementById('results').innerHTML = `Your imput has:
+        Score tag of: ${analyse.score_tag} -
+        Confidence: ${analyse.confidence} -
+        Agreement: ${analyse.agreement} -
+        Irony: ${analyse.irony}`;
     }
+    updateUI(data);
 }
 
 export {
