@@ -32,14 +32,25 @@
                 <section>
                     <div id="analysis">
                         <strong>Sentiment Analisys Results:</strong>
-                        <div id="results"></div>
+                        <div><br></div>
+                        <div id="agreement"></div>
+                        <div id="confidence"></div>
+                        <div id="irony"></div>
+                        <div id="score_tag"></div>
+                        <div id="subjectivity"></div>
                     </div>
                 </section>
     </main>
 
-    <footer>
-        <p></p>
-    </footer>
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 
 </body>
 

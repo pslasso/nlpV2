@@ -23,10 +23,6 @@ async function handleSubmit(event) {
     console.log(`returning ${sentiment}`);
     console.log(sentimentJson);
 
-    console.log("print");
-
-    let results = document.getElementById('results').innerHTML("hello");
-
     Client.updateUI(sentimentJson);
 }
 

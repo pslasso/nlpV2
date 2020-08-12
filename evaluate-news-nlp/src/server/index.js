@@ -56,6 +56,7 @@ app.post('/analyse', async(req, res) => {
             irony,
         };
 
+        res.send(sentiment);
         console.log(data)
 
     } catch (error) {
